@@ -9,10 +9,19 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
+   <context:component-scan base-package="com.sandhu"/>
+
    <bean id="appLogic" class="com.sandhu.logic.AppLogic"/>
    <bean id="address" class="com.sandhu.Entities.Address" scope="prototype"/>
    <bean id="employee" class="com.sandhu.Entities.Employee" scope="prototype" p:address-ref="address">
    </bean>
    <bean id="department" class="com.sandhu.Entities.Department" scope="prototype" autowire="byName"/>
+   <bean id="datasource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+      <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/employeeManagement"/>
+      <property name="username" value="root"/>
+      <property name="password" value="root"/>
+   </bean>
+   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" autowire="byType"/>
 
 </beans>

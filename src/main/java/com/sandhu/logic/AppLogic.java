@@ -3,11 +3,16 @@ package com.sandhu.logic;
 import com.sandhu.Entities.Department;
 import com.sandhu.Entities.Employee;
 import com.sandhu.Enums.Role;
+import com.sandhu.dao.EmployeeDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Scanner;
 
 public class AppLogic {
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
 
     public Employee AddEmployee(ApplicationContext applicationContext, Scanner scan){
@@ -27,12 +32,14 @@ public class AppLogic {
         address.setStreetNo(scan.nextLine());
         System.out.println("Enter employee address - streetName");
         address.setStreetName(scan.nextLine());
+        address.setAddressId(employee.getEmpId());
         employee.setAddress(address);
         System.out.print("Whats the designation of Employee.Choose from one of the below options: \n");
         for(Role r : Role.values()){
             System.out.println(r.getCode());
         }
         employee.setRole(Role.valueOf(scan.nextLine()));
+        employeeDao.insert(employee);
         return employee;
     }
 

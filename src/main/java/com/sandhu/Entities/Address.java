@@ -1,9 +1,18 @@
 package com.sandhu.Entities;
 
 public class Address {
-    String houseNo;
-    String streetNo;
-    String streetName;
+    private int addressId;
+    private String houseNo;
+    private String streetNo;
+    private String streetName;
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
 
     public String getHouseNo() {
         return houseNo;
