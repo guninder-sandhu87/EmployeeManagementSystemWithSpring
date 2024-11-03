@@ -4,17 +4,21 @@ import com.sandhu.Enums.Role;
 
 public class Employee extends Person{
 
-    private final String empId;
+    private static int empId=0;
 
     private Role role;
 
 
-    public Employee(String name, String age, Address address, String empId) {
+    public Employee(String name, int age, Address address) {
         super(name, age, address);
-        this.empId = empId;
     }
 
-    public String getEmpId() {
+    public Employee(){
+        super();
+        empId++;
+    }
+
+    public int getEmpId() {
         return empId;
     }
 
@@ -26,4 +30,10 @@ public class Employee extends Person{
         this.role = role;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId='" + empId + '\'' +
+                ", role=" + role + '\'' + super.toString();
+    }
 }

@@ -9,9 +9,9 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
+   <bean id="appLogic" class="com.sandhu.logic.AppLogic"/>
    <bean id="address" class="com.sandhu.Entities.Address" scope="prototype"/>
-   <bean id="employee" class="com.sandhu.Entities.Employee" scope="prototyp">
-      <constructor-arg name="address" value="address"/>
+   <bean id="employee" class="com.sandhu.Entities.Employee" scope="prototype" p:address-ref="address">
    </bean>
 
 </beans>

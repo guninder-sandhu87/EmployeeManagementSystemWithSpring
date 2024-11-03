@@ -28,4 +28,12 @@ public class Address {
     public void setStreetName(String streetName) {
         this.streetName = streetName;
     }
+
+    @Override
+    public String toString() {
+        return  "houseNo='" + houseNo + '\'' +
+                ", streetNo='" + streetNo + '\'' +
+                ", streetName='" + streetName + '\'' +
+                '}';
+    }
 }
