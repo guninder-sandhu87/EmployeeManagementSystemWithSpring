@@ -13,5 +13,6 @@
    <bean id="address" class="com.sandhu.Entities.Address" scope="prototype"/>
    <bean id="employee" class="com.sandhu.Entities.Employee" scope="prototype" p:address-ref="address">
    </bean>
+   <bean id="department" class="com.sandhu.Entities.Department" scope="prototype" autowire="byName"/>
 
 </beans>

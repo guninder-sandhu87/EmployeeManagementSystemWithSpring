@@ -1,5 +1,6 @@
 package com.sandhu;
 
+import com.sandhu.Entities.Department;
 import com.sandhu.Entities.Employee;
 import com.sandhu.logic.AppLogic;
 import org.springframework.context.ApplicationContext;
@@ -22,12 +23,14 @@ public class App
         System.out.println( "Welcome to Employee Management System" );
         System.out.println("Enter what you want to do :");
         List<Employee> employeeList= new ArrayList<>();
+        List<Department> departments= new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         int choice;
         do{
 
             menuOptions();
             choice=scan.nextInt();
+            scan.nextLine();
             switch(choice){
                 case 1:
                     var employee = appLogic.AddEmployee(applicationContext, scan);
@@ -43,13 +46,23 @@ public class App
                     System.out.println("------------------------------");
                     employeeList.forEach(System.out::println);
                     break;
+                case 5:
+                    var department = appLogic.createDepartment(applicationContext, scan);
+                    departments.add(department);
+                break;
+                case 6:
+                    System.out.println("Displaying all departments");
+                    System.out.println("------------------------------");
+                    departments.forEach(System.out::println);
+                    break;
+                case 7:
+
+                    break;
                 case 0:
                     System.out.println("Thanks !!. Exiting");
                     break;
                 default:
                     System.out.println("Wrong Choice. Please try again ");
-
-
             }
 
         }while(choice!=0);
@@ -60,6 +73,9 @@ public class App
         System.out.println("2.Check employee");
         System.out.println("3.Delete Employee");
         System.out.println("4.Display all Employees");
+        System.out.println("5.Create department");
+        System.out.println("6.Display all department");
+        System.out.println("7.Add Employee to department");
         System.out.println("0.Exit");
     }
 }

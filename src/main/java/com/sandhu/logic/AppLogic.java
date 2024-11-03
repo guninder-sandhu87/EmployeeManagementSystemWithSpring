@@ -1,5 +1,6 @@
 package com.sandhu.logic;
 
+import com.sandhu.Entities.Department;
 import com.sandhu.Entities.Employee;
 import com.sandhu.Enums.Role;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +14,7 @@ public class AppLogic {
         System.out.println("You are going to add new Employee. We will need few details:");
         var employee = applicationContext.getBean("employee", Employee.class);
         System.out.println("Enter employee name");
-        scan.nextLine();
+
         employee.setName(scan.nextLine());
 
         System.out.println("Enter employee age");
@@ -33,5 +34,19 @@ public class AppLogic {
         }
         employee.setRole(Role.valueOf(scan.nextLine()));
         return employee;
+    }
+
+    public void addEmployeeToDepartment(ApplicationContext applicationContext, Scanner scan){
+        var department = applicationContext.getBean("department", Department.class);
+
+    }
+
+    public Department createDepartment(ApplicationContext applicationContext, Scanner scan){
+        var department = applicationContext.getBean("department", Department.class);
+        System.out.println("You are trying to create the department. We need some details");
+        System.out.println("Enter the department name");
+        department.setDepartmentName(scan.nextLine());
+        System.out.println("Department created ");
+        return department;
     }
 }
