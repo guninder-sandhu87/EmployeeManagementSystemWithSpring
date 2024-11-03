@@ -6,6 +6,17 @@ public class Address {
     private String streetNo;
     private String streetName;
 
+    public Address(int addressId, String houseNo, String streetNo, String streetName) {
+        this.addressId = addressId;
+        this.houseNo = houseNo;
+        this.streetNo = streetNo;
+        this.streetName = streetName;
+    }
+
+    public Address() {
+
+    }
+
     public int getAddressId() {
         return addressId;
     }
@@ -40,9 +51,8 @@ public class Address {
 
     @Override
     public String toString() {
-        return  "houseNo='" + houseNo + '\'' +
+        return  " houseNo='" + houseNo + '\'' +
                 ", streetNo='" + streetNo + '\'' +
-                ", streetName='" + streetName + '\'' +
-                '}';
+                ", streetName='" + streetName + '\'';
     }
 }

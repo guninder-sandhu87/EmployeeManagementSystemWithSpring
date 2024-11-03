@@ -35,16 +35,20 @@ public class App
                 case 1:
                     var employee = appLogic.AddEmployee(applicationContext, scan);
                     employeeList.add(employee);
-                    System.out.println("SuccessFully added Employee");
+
                     break;
                 case 2:
+                    System.out.println("Enter the id of employee");
+                    int empId=scan.nextInt();
+                    scan.nextLine();
+                    System.out.println(appLogic.retrieveEmployeeById(empId));
+
                     break;
                 case 3:
                     break;
                 case 4:
                     System.out.println("Displaying all employees");
-                    System.out.println("------------------------------");
-                    employeeList.forEach(System.out::println);
+                    appLogic.retrieveAllEmployees().forEach(System.out::println);
                     break;
                 case 5:
                     var department = appLogic.createDepartment(applicationContext, scan);
@@ -70,7 +74,7 @@ public class App
 
     private static void menuOptions(){
         System.out.println("1. Enter new employee");
-        System.out.println("2.Check employee");
+        System.out.println("2.Retrieve employee using id");
         System.out.println("3.Delete Employee");
         System.out.println("4.Display all Employees");
         System.out.println("5.Create department");

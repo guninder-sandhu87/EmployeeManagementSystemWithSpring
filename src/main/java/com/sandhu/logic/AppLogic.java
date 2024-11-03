@@ -2,11 +2,13 @@ package com.sandhu.logic;
 
 import com.sandhu.Entities.Department;
 import com.sandhu.Entities.Employee;
+import com.sandhu.Entities.Address;
 import com.sandhu.Enums.Role;
 import com.sandhu.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class AppLogic {
@@ -40,12 +42,30 @@ public class AppLogic {
         }
         employee.setRole(Role.valueOf(scan.nextLine()));
         employeeDao.insert(employee);
+        System.out.println("SuccessFully added Employee. The emp id is : "+employee.getEmpId());
         return employee;
     }
 
     public void addEmployeeToDepartment(ApplicationContext applicationContext, Scanner scan){
         var department = applicationContext.getBean("department", Department.class);
 
+    }
+
+    public Employee retrieveEmployeeById(int id){
+        Employee employee = employeeDao.retrieveEmployee(id);
+        int addressId = employee.getAddress().getAddressId();
+        Address address =employeeDao.retrieveAddress(addressId);
+        employee.setAddress(address);
+        return employee;
+    }
+    public List<Employee> retrieveAllEmployees(){
+        List<Employee> employee = employeeDao.retrieveAllEmployees();
+        employee.forEach(emp->{
+            int addressId = emp.getAddress().getAddressId();
+            Address address =employeeDao.retrieveAddress(addressId);
+            emp.setAddress(address);
+        });
+        return employee;
     }
 
     public Department createDepartment(ApplicationContext applicationContext, Scanner scan){
