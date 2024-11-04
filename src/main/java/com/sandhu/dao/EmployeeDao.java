@@ -10,7 +10,10 @@ public interface EmployeeDao {
 
  Integer insertAddress(Address address);
  void update(Employee employee);
- void delete(Employee employee);
+
+
+ void delete(int empId);
+
  Employee retrieveEmployee(int empId);
 
 

@@ -45,6 +45,9 @@ public class App
 
                     break;
                 case 3:
+                    System.out.println("Enter the id of employee you want to delete");
+                    appLogic.deleteEmployee(scan.nextInt());
+                    scan.nextLine();
                     break;
                 case 4:
                     System.out.println("Displaying all employees");

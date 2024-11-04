@@ -68,6 +68,10 @@ public class AppLogic {
         return employee;
     }
 
+    public void deleteEmployee(int empId){
+        employeeDao.delete(empId);
+    }
+
     public Department createDepartment(ApplicationContext applicationContext, Scanner scan){
         var department = applicationContext.getBean("department", Department.class);
         System.out.println("You are trying to create the department. We need some details");

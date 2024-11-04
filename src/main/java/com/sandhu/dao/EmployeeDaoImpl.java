@@ -5,6 +5,7 @@ import com.sandhu.Entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -42,7 +43,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void delete(Employee employee) {
+    public void delete(int empId) {
+        String getAddress="select addressId from employee where empId=?";
+        Integer addressId = this.jdbcTemplate.queryForObject(getAddress, Integer.class,empId);
+        String deleteEmployee="delete from Employee where empId=?";
+        this.jdbcTemplate.update(deleteEmployee,empId);
+        System.out.println(empId+ " successfully deleted");
+
+        System.out.println("Deleting corresponding address now with id "+ addressId);
+        String deleteAddress ="delete from Address where addressId=?";
+        this.jdbcTemplate.update(deleteAddress,addressId);
 
     }
 
